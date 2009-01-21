@@ -15,7 +15,7 @@ db.config.password =
 db.config.dbname = surforcecore
 
 db2.adapter = PDO_MYSQL
-db2.config.host = srv2..moviclips.com
+db2.config.host = srv2.surforce.com
 db2.config.username = root
 db2.config.password =
 db2.config.dbname = surforcecore2
