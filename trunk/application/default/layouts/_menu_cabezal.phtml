@@ -1,0 +1,23 @@
+<?php if(isset($this->user->usuario)): ?>
+
+    <ul id="menu_cabezal">
+    
+       <li id="menu_item_home"><a href="<?php echo $this->baseUrl; ?>/"><strong>home</strong></a></li>
+        
+        <?php foreach($this->layout()->menu as $item => $menu): ?>
+
+            <li id="menu_item_home">
+                <a href="<?php echo $this->baseUrl ?>/<?php echo $menu['url'] ?> ">
+                    <strong><?php echo $menu['texto'] ?> </strong>
+                </a>
+            </li>
+            
+        <?php endforeach; ?>
+
+        <li id="menu_item_salir">
+            <a href="<?php echo $this->baseUrl ?>/admin/login/logout">Salir</a>
+        </li>
+    
+    </ul>
+    
+<?php endif; ?>
