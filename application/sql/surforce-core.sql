@@ -17,7 +17,7 @@ CREATE TABLE `aplicaciones` (
   `estado` tinyint(1) default '1',
   PRIMARY KEY  (`aplicacion_id`),
   KEY `estado_IDX` (`estado`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- ----------------------------
 -- Table structure for menu
@@ -29,7 +29,7 @@ CREATE TABLE `menu` (
   `url` varchar(250) NOT NULL,
   `estado` tinyint(4) NOT NULL,
   PRIMARY KEY  (`aplicacion_id`,`item_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- ----------------------------
 -- Table structure for menu_items
@@ -41,7 +41,7 @@ CREATE TABLE `menu_items` (
   `url` varchar(250) default NULL,
   `estado` tinyint(4) default NULL,
   PRIMARY KEY  (`menu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- ----------------------------
 -- Table structure for usuarios
@@ -59,7 +59,7 @@ CREATE TABLE `usuarios` (
   KEY `usuario_IDX` (`usuario`),
   KEY `clave_IDX` (`clave`),
   KEY `estado_IDX` (`estado`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- ----------------------------
 -- Records
