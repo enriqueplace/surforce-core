@@ -1,0 +1,37 @@
+[general]
+debug   = on
+session  = on
+devel    = on
+timezone  = America/Buenos_Aires
+
+appname   = surforcecore
+appid     = 1
+
+[database_prod]
+db.adapter = PDO_MYSQL
+db.config.host = srv1.surforce.com
+db.config.username = root
+db.config.password =
+db.config.dbname = surforcecore
+
+db2.adapter = PDO_MYSQL
+db2.config.host = srv2..moviclips.com
+db2.config.username = root
+db2.config.password =
+db2.config.dbname = surforcecore2
+
+[database_devel]
+db.adapter = PDO_MYSQL
+db.config.host = localhost
+db.config.username = root
+db.config.password =
+db.config.dbname =surforcecore
+
+[personalizacion]
+sitio.titulo = "SURFORCE CORE"
+
+[modules]
+default = "../application/default/controllers"
+
+controllers.admin           = "../application/admin/controllers"
+controllers.estadisticas    = "../application/estadisticas/controllers"
