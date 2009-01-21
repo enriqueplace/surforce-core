@@ -8,6 +8,9 @@ appname = surforcecore
 appid   = 1
 email   = info@surforce.com
 
+[database]
+charset = UTF8
+
 [database_prod]
 db.adapter = PDO_MYSQL
 db.config.host = srv1.surforce.com
