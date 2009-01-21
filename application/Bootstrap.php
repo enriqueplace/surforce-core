@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Bootstrap
+ *
+ * @author  SURFORCE
+ * @version 0.1
+ */
 class Bootstrap
 {
     private $_config;

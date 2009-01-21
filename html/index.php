@@ -8,10 +8,6 @@
 
 require_once '../application/Bootstrap.php';
 
-/*
- * Definición de rutas base
- */
-
 $bootstrap = new Bootstrap();
 
 $bootstrap->setPath();
