@@ -4,8 +4,9 @@ session  = on
 devel    = on
 timezone  = America/Buenos_Aires
 
-appname   = surforcecore
-appid     = 1
+appname = surforcecore
+appid   = 1
+email   = info@surforce.com
 
 [database_prod]
 db.adapter = PDO_MYSQL
