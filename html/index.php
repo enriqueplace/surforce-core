@@ -97,7 +97,14 @@ $db = Zend_Db::factory($db_adapter, $db_config);
 Zend_Db_Table::setDefaultAdapter($db);
 Zend_Registry::set('dbAdapter', $db);
 
-$db->query('SET NAMES utf8');
+switch(strtolower($db_adapter)){
+    case 'mysql':
+    case 'mysqli':
+    case 'pdo_mysql':
+        $db->query('SET NAMES \''.strtoupper($config->database->charset).'\'');
+        $db->query('SET CHARACTER SET '.strtoupper($config->database->charset));
+        break;
+}
 
 /*
  * SETUP CONTROLLER
