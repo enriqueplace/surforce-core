@@ -169,8 +169,8 @@ class Bootstrap
     {
         Zend_Layout::startMvc(
             array(
-                'layoutPath' => '../application/default/layouts',
-                'layout' => 'main'
+                'layoutPath' => $this->_config->layout->default_path,
+                'layout' => $this->_config->layout->default_name
             )
         );
     }
