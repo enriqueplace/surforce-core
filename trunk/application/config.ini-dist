@@ -34,8 +34,13 @@ db.config.dbname = surforce-core
 [personalizacion]
 sitio.titulo = "SURFORCE CORE"
 
+[layout]
+default_path = "../application/default/layouts"
+default_name = "main"
+
 [modules]
 default = "../application/default/controllers"
 
 controllers.admin           = "../application/admin/controllers"
 controllers.estadisticas    = "../application/estadisticas/controllers"
+
