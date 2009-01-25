@@ -117,9 +117,7 @@ class Bootstrap
         }else{
             $db_adapter = $this->_config->database_prod->db->adapter;
             $db_config = $this->_config->database_prod->db->config->toArray();
-        }
-
-        
+        }       
 
         try{
 
@@ -194,8 +192,9 @@ class Bootstrap
             $this->_controller->addControllerDirectory($path, $name);
         }
     }
-    public function setLayoutDefault()
+    public function setView()
     {
+        /* View Default */
         Zend_Layout::startMvc(
             array(
                 'layoutPath' => $this->_config->layout->default_path,
@@ -218,7 +217,7 @@ class Bootstrap
             $this->setController();
 
             $this->setModules();
-            $this->setLayoutDefault();
+            $this->setView();
 
             $this->_controller->dispatch();
 
