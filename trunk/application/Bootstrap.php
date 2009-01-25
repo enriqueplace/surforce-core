@@ -13,7 +13,7 @@ class Bootstrap
     
     public function __construct()
     {
-        
+       
     }
     public function setPath()
     {
@@ -22,12 +22,19 @@ class Bootstrap
             . PATH_SEPARATOR . '../library'
             . PATH_SEPARATOR . '../application/default/models/'
             . PATH_SEPARATOR . get_include_path()
-        );
+        );         
     }
-    public function setAutoload()
+    public function setEnvironment()
     {
+        $this->setPath();
+
         include "Zend/Loader.php";
         Zend_Loader::registerAutoload();
+
+        $this->setTimeZone();
+
+        $this->setErrorReporting();
+
     }
     /**
      * Configuración del sistema que será leída del archivo config.ini
@@ -54,6 +61,7 @@ class Bootstrap
 
         $this->_registry->set('base_path_html', realpath('.'));
         $this->_registry->set('base_path_app',  realpath('..'));
+        
         $this->_registry->set('debug', $this->_config->general->debug);
         $this->_registry->set('devel', $this->_config->general->devel);
     }
@@ -111,18 +119,39 @@ class Bootstrap
             $db_config = $this->_config->database_prod->db->config->toArray();
         }
 
-        $db = Zend_Db::factory($db_adapter, $db_config);
+        
 
-        Zend_Db_Table::setDefaultAdapter($db);
-        Zend_Registry::set('dbAdapter', $db);
+        try{
 
-        switch(strtolower($db_adapter)){
-            case 'mysql':
-            case 'mysqli':
-            case 'pdo_mysql':
-                $db->query('SET NAMES \''.strtoupper($this->_config->database->charset).'\'');
-                $db->query('SET CHARACTER SET '.strtoupper($this->_config->database->charset));
-                break;
+            $db = Zend_Db::factory($db_adapter, $db_config);
+
+            Zend_Db_Table::setDefaultAdapter($db);
+            Zend_Registry::set('dbAdapter', $db);
+
+            switch(strtolower($db_adapter)){
+                case 'mysql':
+                case 'mysqli':
+                case 'pdo_mysql':
+                    $db->query('SET NAMES \''.strtoupper($this->_config->database->charset).'\'');
+                    $db->query('SET CHARACTER SET '.strtoupper($this->_config->database->charset));
+                    break;
+            }
+
+       }catch(Zend_Db_Statement_Exception $e){
+
+            echo '<strong>Se ha producido un error al intentar recuperar los datos '
+                .'['.$e->getMessage().']</strong> <br><br>';
+
+        }catch(Zend_Db_Adapter_Exception $e){
+
+            echo '<strong>Se ha producido un error al conectar a la base de datos'
+                .'['.$e->getMessage().'] </strong><br><br>';
+            
+        }catch(Zend_Exception $e){
+
+            echo '<strong>Se ha producido un error inesperado '
+                .'['.$e->getMessage().'] </strong><br><br> ';
+                
         }
     }
     public function setController()
@@ -177,6 +206,20 @@ class Bootstrap
     public function run()
     {
         try{
+
+            $this->setEnvironment();            
+
+            $this->setConfig();
+            $this->setRegistry();
+
+            $this->setSessionDefault();
+            $this->setDatabase();
+
+            $this->setController();
+
+            $this->setModules();
+            $this->setLayoutDefault();
+
             $this->_controller->dispatch();
 
         }catch(Zend_Exception $e){
