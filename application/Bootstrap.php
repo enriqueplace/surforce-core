@@ -31,10 +31,6 @@ class Bootstrap
         include "Zend/Loader.php";
         Zend_Loader::registerAutoload();
 
-        $this->setTimeZone();
-
-        $this->setErrorReporting();
-
     }
     /**
      * Configuración del sistema que será leída del archivo config.ini
@@ -67,8 +63,10 @@ class Bootstrap
     }
     public function setTimeZone()
     {
-        if($this->_config->general->timezone){
+        if(isset($this->_config->general->timezone)){
             date_default_timezone_set($this->_config->general->timezone);
+        }else{
+            date_default_timezone_set('America/Buenos_Aires');
         }
     }
    /**
@@ -94,7 +92,11 @@ class Bootstrap
     {
         if($this->_config->general->session){
 
-            $session_name = $this->_config->general->appname ? $this->_config->general->appname : 'app';
+            if(isset($this->_config->general->appname)){
+                $session_name = $this->_config->general->appname;
+            }else{
+                $session_name = 'default_app_name';
+            }
 
             $session = new Zend_Session_Namespace($session_name);
             $this->_registry->set('session', $session);
@@ -205,13 +207,19 @@ class Bootstrap
     public function run()
     {
         try{
-
-            $this->setEnvironment();            
+            $this->setEnvironment();
 
             $this->setConfig();
+
+            $this->setTimeZone();
+
+            $this->setErrorReporting();
+            
             $this->setRegistry();
 
             $this->setSessionDefault();
+            
+    
             $this->setDatabase();
 
             $this->setController();
