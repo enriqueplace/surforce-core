@@ -208,22 +208,13 @@ class Bootstrap
     {
         try{
             $this->setEnvironment();
-
             $this->setConfig();
-
             $this->setTimeZone();
-
-            $this->setErrorReporting();
-            
+            $this->setErrorReporting();           
             $this->setRegistry();
-
             $this->setSessionDefault();
-            
-    
             $this->setDatabase();
-
             $this->setController();
-
             $this->setModules();
             $this->setView();
 
