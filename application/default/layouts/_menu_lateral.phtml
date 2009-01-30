@@ -1,0 +1,23 @@
+
+
+<?php if(isset($this->user->usuario)): ?>
+
+    <?php if (isset($this->layout()->menuItems) && count($this->layout()->menuItems) > 0 ): ?>
+    <div id="menu-lateral">
+        <strong>Menú</strong>
+            <ul>
+            <?php foreach($this->layout()->menuItems as $item => $menu): ?>
+
+                <li>
+                    <a href="<?php echo $this->baseUrl ?>/<?php echo $menu['url'] ?> ">
+                        <strong><?php echo $menu['texto'] ?> </strong>
+                    </a>
+                </li>
+
+            <?php endforeach; ?>
+            </ul>
+    </div>
+    <?php endif; ?>
+
+<?php endif; ?>
+
