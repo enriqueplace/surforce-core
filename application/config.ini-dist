@@ -4,9 +4,13 @@ session  = on
 devel    = on
 timezone  = America/Buenos_Aires
 
-appname = surforcecore
-appid   = 1
-email   = info@surforce.com
+[application]
+id   = 1
+name = surforcecore
+
+[email]
+info   = info@surforce.com
+system = sistemas@surforce.com
 
 [database]
 charset = UTF8

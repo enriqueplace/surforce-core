@@ -33,12 +33,12 @@ class Bootstrap
 
     }
     /**
-     * Configuraci贸n del sistema que ser谩 le铆da del archivo config.ini
-     * - cada sistema deber谩 tener su propio archivo de configuraci贸n
-     * - cada entorno deber谩 tener sus propios datos de configuraci贸n
+     * Configuraci髇 del sistema que ser帷 le韉a del archivo config.ini
+     * - cada sistema deber帷 tener su propio archivo de configuraci髇
+     * - cada entorno deber帷 tener sus propios datos de configuraci髇
      *
-     *  ej. si es desarrollo, deber谩 apuntar a la basa de datos correspondiente,
-     * cambia la conexi贸n si es un sistema en producci贸n
+     *  ej. si es desarrollo, deber帷 apuntar a la basa de datos correspondiente,
+     * cambia la conexi髇 si es un sistema en producci髇
      */
     public function setConfig()
     {
@@ -161,7 +161,7 @@ class Bootstrap
          * DEVEL / PROD comportamiento ante errores / fallas
          *
          * - Solo desplegar excepciones en modo desarrollo
-         * - Solo en producci贸n, ante errores de url's, redireccionar a un
+         * - Solo en producci髇, ante errores de url's, redireccionar a un
          * controller por defecto.
          */
         if($this->_config->general->devel){
@@ -173,8 +173,8 @@ class Bootstrap
     public function setModules()
     {
         /*
-         * MODULE DEFAULT define cual es el m贸dulo por defecto
-         * que debe levantar cuando inicie por primera vez la aplicaci贸n
+         * MODULE DEFAULT define cual es el m骴ulo por defecto
+         * que debe levantar cuando inicie por primera vez la aplicaci髇
          */
         if($this->_config->modules->default){
             $mod_default = $this->_config->modules->default;
@@ -186,7 +186,7 @@ class Bootstrap
         );
         
         /*
-         * LOAD MODULES lee la lista de m贸dulos existentes en el
+         * LOAD MODULES lee la lista de m骴ulos existentes en el
          * config.ini y registra sus rutas para poder permitir
          * responder a las peticiones desde el exterior
          */
@@ -222,8 +222,8 @@ class Bootstrap
 
         }catch(Zend_Exception $e){
 
-            /* En producci贸n no se desplega informaci贸n de error
-             * del sistema (considerar implementar env铆o de email
+            /* En producci髇 no se desplega informaci髇 de error
+             * del sistema (considerar implementar env韔 de email
              * o log de fallos) */
             if($this->_config->general->devel || $this->_config->general->debug){
 
