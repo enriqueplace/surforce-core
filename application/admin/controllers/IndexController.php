@@ -18,5 +18,5 @@ class Admin_IndexController extends Zsurforce_Generic_ControllerAdmin
     public function indexAction() 
     {
         
-    }
+    }    
 }

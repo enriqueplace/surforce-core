@@ -33,12 +33,12 @@ class Bootstrap
 
     }
     /**
-     * Configuración del sistema que será¡ leída del archivo config.ini
-     * - cada sistema deberá¡ tener su propio archivo de configuración
-     * - cada entorno deberá¡ tener sus propios datos de configuración
+     * Configuraciï¿½n del sistema que serï¿½ leï¿½da del archivo config.ini
+     * - cada sistema deberï¿½ tener su propio archivo de configuraciï¿½n
+     * - cada entorno deberï¿½ tener sus propios datos de configuraciï¿½n
      *
-     *  ej. si es desarrollo, deberá¡ apuntar a la basa de datos correspondiente,
-     * cambia la conexión si es un sistema en producción
+     *  ej. si es desarrollo, deberï¿½ apuntar a la basa de datos correspondiente,
+     * cambia la conexiï¿½n si es un sistema en producciï¿½n
      */
     public function setConfig()
     {
@@ -76,7 +76,7 @@ class Bootstrap
     */
     public function setErrorReporting()
     {
-        if($this->_config->general->debug){
+        if(isset($this->_config->general->debug) && $this->_config->general->debug){
 
             ini_set('display_startup_errors', 1);
             ini_set('display_errors', 1);
@@ -113,7 +113,7 @@ class Bootstrap
      */    
     public function setDatabase()
     {
-        if($this->_config->general->debug){
+        if($this->_config->general->devel){
             $db_adapter = $this->_config->database_devel->db->adapter;
             $db_config = $this->_config->database_devel->db->config->toArray();
         }else{
@@ -161,7 +161,7 @@ class Bootstrap
          * DEVEL / PROD comportamiento ante errores / fallas
          *
          * - Solo desplegar excepciones en modo desarrollo
-         * - Solo en producción, ante errores de url's, redireccionar a un
+         * - Solo en producciï¿½n, ante errores de url's, redireccionar a un
          * controller por defecto.
          */
         if($this->_config->general->devel){
@@ -173,8 +173,8 @@ class Bootstrap
     public function setModules()
     {
         /*
-         * MODULE DEFAULT define cual es el módulo por defecto
-         * que debe levantar cuando inicie por primera vez la aplicación
+         * MODULE DEFAULT define cual es el mï¿½dulo por defecto
+         * que debe levantar cuando inicie por primera vez la aplicaciï¿½n
          */
         if($this->_config->modules->default){
             $mod_default = $this->_config->modules->default;
@@ -186,7 +186,7 @@ class Bootstrap
         );
         
         /*
-         * LOAD MODULES lee la lista de módulos existentes en el
+         * LOAD MODULES lee la lista de mï¿½dulos existentes en el
          * config.ini y registra sus rutas para poder permitir
          * responder a las peticiones desde el exterior
          */
@@ -222,8 +222,8 @@ class Bootstrap
 
         }catch(Zend_Exception $e){
 
-            /* En producción no se desplega información de error
-             * del sistema (considerar implementar envío de email
+            /* En producciï¿½n no se desplega informaciï¿½n de error
+             * del sistema (considerar implementar envï¿½o de email
              * o log de fallos) */
             if($this->_config->general->devel || $this->_config->general->debug){
 

@@ -14,6 +14,6 @@ class Admin_UsuariosController extends Zsurforce_Generic_Controller
 	 */
     public function indexAction() 
     {
-        die('Admin usuarios');
+     
     }
 }
