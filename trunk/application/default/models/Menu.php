@@ -31,10 +31,7 @@ class Models_Menu extends Zend_Db_Table_Abstract
             .' AND estado = 1' 
             .' ORDER BY item_id DESC ',
             $module_name
-        );
-        echo $sql;
-        var_dump($gestor->_db->fetchAll($sql));
-        
+        );        
         return $gestor->_db->fetchAll($sql);
     }
 }
