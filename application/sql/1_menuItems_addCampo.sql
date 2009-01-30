@@ -11,5 +11,5 @@ CREATE TABLE `menu_items` (
 -- ----------------------------
 -- Records
 -- ----------------------------
-INSERT INTO `menu_items` VALUES ('1', '1', 'admin', 'item de prueba menu 1', '', '1');
-INSERT INTO `menu_items` VALUES ('2', '2', 'admin', 'item de prueba menu 2', '', '1');
+INSERT INTO `menu_items` VALUES ('1', '1', 'admin', 'ABM Usuarios', 'admin/usuarios', '1');
+INSERT INTO `menu_items` VALUES ('2', '2', 'admin', 'item de prueba menu 2', 'admin/opcion2', '1');
