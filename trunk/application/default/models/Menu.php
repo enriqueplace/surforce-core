@@ -20,4 +20,21 @@ class Models_Menu extends Zend_Db_Table_Abstract
         
         return $gestor->_db->fetchAll($sql);
     }
+    public static function getMenuItemsFromModule($module_name)
+    {
+        $gestor = new Models_Menu();
+
+        $sql =  sprintf(
+            '  SELECT item_id, texto '
+            .' FROM menu_items '
+            .' WHERE app_module = "%s" '
+            .' AND estado = 1' 
+            .' ORDER BY item_id DESC ',
+            $module_name
+        );
+        echo $sql;
+        var_dump($gestor->_db->fetchAll($sql));
+        
+        return $gestor->_db->fetchAll($sql);
+    }
 }
