@@ -29,7 +29,7 @@ class Models_Menu extends Zend_Db_Table_Abstract
             .' FROM menu_items '
             .' WHERE app_module = "%s" '
             .' AND estado = 1' 
-            .' ORDER BY item_id DESC ',
+            .' ORDER BY item_id ASC ',
             $module_name
         );        
         return $gestor->_db->fetchAll($sql);
