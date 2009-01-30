@@ -25,7 +25,7 @@ class Models_Menu extends Zend_Db_Table_Abstract
         $gestor = new Models_Menu();
 
         $sql =  sprintf(
-            '  SELECT item_id, texto '
+            '  SELECT item_id, texto, url '
             .' FROM menu_items '
             .' WHERE app_module = "%s" '
             .' AND estado = 1' 
