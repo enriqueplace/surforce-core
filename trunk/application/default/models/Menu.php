@@ -16,8 +16,7 @@ class Models_Menu extends Zend_Db_Table_Abstract
             .' FROM menu '
             .' WHERE aplicacion_id = %u '
             .' AND estado = 1' , $id_aplicacion
-        );
-        
+        );        
         return $gestor->_db->fetchAll($sql);
     }
     public static function getMenuItemsFromModule($module_name)
