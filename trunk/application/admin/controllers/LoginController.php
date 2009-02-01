@@ -65,10 +65,10 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                     }
 
                 }catch(Zend_Db_Statement_Exception $e){
+                    
                     $this->view->mensajeError =
                         'Se ha producido un error al intentar recuperar los datos <br><br>'
-                        .'['.$e->getMessage().']<br><br>'
-                    .' Por favor envíe un email a sistemas@moviclips.com' ;
+                        .' Por favor envíe un email a sistemas@moviclips.com' ;
                 }catch(Zend_Db_Adapter_Exception $e){
                     $this->view->mensajeError =
                         'Se ha producido un error al conectar a la base de datos.'
