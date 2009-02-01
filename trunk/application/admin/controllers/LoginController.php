@@ -73,7 +73,7 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                     $this->view->mensajeError =
                         'Se ha producido un error al conectar a la base de datos.'
                         .' Por favor reintente en unos minutos';
-                }catch(Exception $e){
+                }catch(Zend_Exception $e){
                     $this->view->mensajeError =
                         'Se ha producido un error inesperado.'
                         .' Por favor reintente en unos minutos';
