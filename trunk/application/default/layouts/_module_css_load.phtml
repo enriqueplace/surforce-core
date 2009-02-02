@@ -4,6 +4,10 @@
  * Se encarga de buscar dentro del modulo corriente en ejecucion si tiene
  * un main.css, si existe, lo carga (permite poder configurar facilmente
  * la estetica de un modulo particular)
+ *
+ * Nota: Como el archivo se encuentra fuera del directorio publico "html"
+ * no podemos agregarlo como un archivo, hay que imprimir el contenido
+ * e incluirlo dentro del fuente de la pagina
  */
 $filename = realpath('..')  . DIRECTORY_SEPARATOR
     .'application'          . DIRECTORY_SEPARATOR
