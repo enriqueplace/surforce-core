@@ -1,0 +1,41 @@
+<?php
+/* MODULE LOAD CSS
+ *
+ * Se encarga de buscar dentro del modulo corriente en ejecucion si tiene
+ * un main.css, si existe, lo carga (permite poder configurar facilmente
+ * la estetica de un modulo particular)
+ *
+ * Nota: Como el archivo se encuentra fuera del directorio publico "html"
+ * no podemos agregarlo como un archivo, hay que imprimir el contenido
+ * e incluirlo dentro del fuente de la pagina
+ */
+
+$path = realpath('.')  . DIRECTORY_SEPARATOR
+    .'styles'   . DIRECTORY_SEPARATOR;
+
+foreach($this->config->layout->css as  $key => $name){
+    echo $path . $name;
+    echo cargarCSS($this->config, $path . $name);
+}
+
+function cargarCSS($config, $filename){
+
+    if(file_exists($filename)){
+
+        $handle     = fopen($filename, "r");
+        $contents   = fread($handle, filesize($filename));
+
+        fclose($handle);
+
+        $str_scripts = '<style type="text/css">'.$contents.'</style>';
+
+        if($config->general->devel || $config->general->debug){
+            echo $str_scripts;
+        }else{
+            /* "comprime" (elimina espacios) */
+            echo preg_replace('/\s+/', ' ', $str_scripts);
+        }
+    }else{
+        echo '<!-- No existe ' . $filename . '-->';
+    }
+}
