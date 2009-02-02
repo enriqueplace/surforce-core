@@ -1,9 +1,15 @@
 <?php
+/* MODULE LOAD CSS
+ *
+ * Se encarga de buscar dentro del modulo corriente en ejecucion si tiene
+ * un main.css, si existe, lo carga (permite poder configurar facilmente
+ * la estetica de un modulo particular)
+ */
 $filename = realpath('..')  . DIRECTORY_SEPARATOR
-    .'application'              . DIRECTORY_SEPARATOR
-    .$this->moduleName   . DIRECTORY_SEPARATOR
-    .'views'                    . DIRECTORY_SEPARATOR
-    .'scripts'                  . DIRECTORY_SEPARATOR
+    .'application'          . DIRECTORY_SEPARATOR
+    .$this->moduleName      . DIRECTORY_SEPARATOR
+    .'views'                . DIRECTORY_SEPARATOR
+    .'scripts'              . DIRECTORY_SEPARATOR
     .$this->controllerName  . DIRECTORY_SEPARATOR
     .'main.css';
 
