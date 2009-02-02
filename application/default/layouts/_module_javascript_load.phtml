@@ -1,0 +1,27 @@
+<?php
+/* MODULE LOAD JAVASCRIPT
+ *
+ * Se encarga de buscar dentro del modulo corriente en ejecucion si tiene
+ * un main.js, si existe, lo carga (permite poder configurar facilmente
+ * la inclusion de js exclusivos para el modulo y que no deben estar en
+ * site.js)
+ */
+$filename = realpath('..')  . DIRECTORY_SEPARATOR
+    .'application'          . DIRECTORY_SEPARATOR
+    .$this->moduleName      . DIRECTORY_SEPARATOR
+    .'views'                . DIRECTORY_SEPARATOR
+    .'scripts'              . DIRECTORY_SEPARATOR
+    .$this->controllerName  . DIRECTORY_SEPARATOR
+    .'main.js';
+
+if(file_exists($filename)){
+
+    $handle     = fopen($filename, "r");
+    $contents   = fread($handle, filesize($filename));
+
+    fclose($handle);
+
+    $str_scripts = '<script type="text/javascript">'.$contents.'</script>';    
+
+    echo $str_scripts;
+}
