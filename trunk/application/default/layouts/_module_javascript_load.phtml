@@ -5,6 +5,10 @@
  * un main.js, si existe, lo carga (permite poder configurar facilmente
  * la inclusion de js exclusivos para el modulo y que no deben estar en
  * site.js)
+ *
+ * Nota: Como el archivo se encuentra fuera del directorio publico "html"
+ * no podemos agregarlo como un archivo, hay que imprimir el contenido
+ * e incluirlo dentro del fuente de la pagina
  */
 $filename = realpath('..')  . DIRECTORY_SEPARATOR
     .'application'          . DIRECTORY_SEPARATOR
