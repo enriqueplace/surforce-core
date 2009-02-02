@@ -1,0 +1,26 @@
+<?php
+/* CORE LOAD CSS
+ *
+ * Carga todos los css permanentes del sitio web, la lista la obtiene
+ * del config.ini
+ *
+ */
+
+foreach($this->config->layout->javascript as  $key => $name){
+    echo cargarJS($this->config, $name, $this->baseUrl);
+}
+
+function cargarJS($config, $filename, $baseUrl){
+
+    $path =
+        realpath('.')   . DIRECTORY_SEPARATOR
+        .'scripts'       . DIRECTORY_SEPARATOR;
+
+    if(file_exists($path . $filename)){
+
+        return '<script src="'.$baseUrl.'/styles/'.$filename.'" type="text/javascript"></script>'."\n";
+
+    }else{
+        return '<!-- No existe ' . $filename . '-->'."\n";
+    }
+}

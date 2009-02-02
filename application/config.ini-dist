@@ -1,7 +1,7 @@
 [general]
-debug   = 
-session  = on
-devel    = on
+debug   = off
+session = on
+devel   = on
 timezone  = America/Buenos_Aires
 
 [application]
@@ -14,6 +14,12 @@ system = sistemas@surforce.com
 
 [database]
 charset = UTF8
+table.prefix =
+
+table.usuarios      = usuarios
+table.menu          = menu
+table.menu_items    = menu_items
+table.aplicaciones  = aplicaciones
 
 [database_prod]
 db.adapter = PDO_MYSQL
@@ -41,6 +47,14 @@ sitio.titulo = "SURFORCE CORE"
 [layout]
 default_path = "../application/default/layouts"
 default_name = "main"
+
+css.1 = "site.css"
+css.2 = "thickbox.css"
+
+javascript.1 = "site.js"
+javascript.2 = "site_tools.js"
+javascript.3 = "site_effects.js"
+javascript.4 = "site_forms.js"
 
 [modules]
 default = "../application/default/controllers"

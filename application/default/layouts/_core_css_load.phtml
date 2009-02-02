@@ -1,41 +1,26 @@
 <?php
-/* MODULE LOAD CSS
+/* CORE LOAD JAVASCRIPTS
  *
- * Se encarga de buscar dentro del modulo corriente en ejecucion si tiene
- * un main.css, si existe, lo carga (permite poder configurar facilmente
- * la estetica de un modulo particular)
+ * Carga todos los css permanentes del sitio web, la lista la obtiene
+ * del config.ini
  *
- * Nota: Como el archivo se encuentra fuera del directorio publico "html"
- * no podemos agregarlo como un archivo, hay que imprimir el contenido
- * e incluirlo dentro del fuente de la pagina
  */
 
-$path = realpath('.')  . DIRECTORY_SEPARATOR
-    .'styles'   . DIRECTORY_SEPARATOR;
-
 foreach($this->config->layout->css as  $key => $name){
-    echo $path . $name;
-    echo cargarCSS($this->config, $path . $name);
+    echo cargarCSS($this->config, $name, $this->baseUrl);
 }
 
-function cargarCSS($config, $filename){
+function cargarCSS($config, $filename, $baseUrl){
 
-    if(file_exists($filename)){
+    $path =
+        realpath('.')   . DIRECTORY_SEPARATOR
+        .'styles'       . DIRECTORY_SEPARATOR;
 
-        $handle     = fopen($filename, "r");
-        $contents   = fread($handle, filesize($filename));
+    if(file_exists($path . $filename)){
 
-        fclose($handle);
+        return '<link rel="stylesheet" type="text/css" media="screen" href="'.$baseUrl.'/styles/'.$filename.'" />'."\n";
 
-        $str_scripts = '<style type="text/css">'.$contents.'</style>';
-
-        if($config->general->devel || $config->general->debug){
-            echo $str_scripts;
-        }else{
-            /* "comprime" (elimina espacios) */
-            echo preg_replace('/\s+/', ' ', $str_scripts);
-        }
     }else{
-        echo '<!-- No existe ' . $filename . '-->';
+        return '<!-- No existe ' . $filename . '-->'."\n";
     }
 }
