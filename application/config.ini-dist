@@ -47,6 +47,7 @@ sitio.titulo = "SURFORCE CORE"
 [layout]
 default_path = "../application/default/layouts"
 default_name = "main"
+logo = "/images/logo.gif"
 
 css.1 = "site.css"
 css.2 = "thickbox.css"
