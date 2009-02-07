@@ -68,15 +68,36 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                     
                     $this->view->mensajeError =
                         'Se ha producido un error al intentar recuperar los datos <br><br>'
-                        .' Por favor envíe un email a sistemas@moviclips.com' ;
+                        .' En este momento se esta generando un reporte con el fallo' ;
+                        
+                        mail(
+                            $this->_config->email->system,
+                            'SURFORCE_USUARIOS: error sintaxis en bd de login',
+                            var_dump($usuario, true) . ': '. $e
+                        );
+
                 }catch(Zend_Db_Adapter_Exception $e){
                     $this->view->mensajeError =
                         'Se ha producido un error al conectar a la base de datos.'
                         .' Por favor reintente en unos minutos';
+
+                        mail(
+                            $this->_config->email->system,
+                            'SURFORCE_USUARIOS: error conexion en bd',
+                            var_dump($usuario, true) . ': '. $e
+                        );
+
                 }catch(Zend_Exception $e){
                     $this->view->mensajeError =
                         'Se ha producido un error inesperado.'
                         .' Por favor reintente en unos minutos';
+
+                        mail(
+                            $this->_config->email->system,
+                            'SURFORCE_USUARIOS: login error general',
+                            var_dump($usuario, true) . ': '. $e
+                        );
+
                 }
             }
         }
