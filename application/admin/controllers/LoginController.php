@@ -73,7 +73,7 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                         mail(
                             $this->_config->email->system,
                             'SURFORCE_USUARIOS: error sintaxis en bd de login',
-                            var_dump($usuario, true) . ': '. $e
+                            var_export($usuario, true) . ': '. $e
                         );
 
                 }catch(Zend_Db_Adapter_Exception $e){
@@ -84,7 +84,7 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                         mail(
                             $this->_config->email->system,
                             'SURFORCE_USUARIOS: error conexion en bd',
-                            var_dump($usuario, true) . ': '. $e
+                            var_export($usuario, true) . ': '. $e
                         );
 
                 }catch(Zend_Exception $e){
@@ -95,7 +95,7 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                         mail(
                             $this->_config->email->system,
                             'SURFORCE_USUARIOS: login error general',
-                            var_dump($usuario, true) . ': '. $e
+                            var_export($usuario, true) . ': '. $e
                         );
 
                 }
