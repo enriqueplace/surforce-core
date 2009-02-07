@@ -68,7 +68,7 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                     
                     $this->view->mensajeError =
                         'Se ha producido un error al intentar recuperar los datos <br><br>'
-                        .' En este momento se esta generando un reporte con el fallo' ;
+                        .' En este momento se envió un reporte con el fallo al área de sistemas' ;
                         
                         mail(
                             $this->_config->email->system,
