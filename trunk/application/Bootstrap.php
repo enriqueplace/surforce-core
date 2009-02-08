@@ -42,7 +42,12 @@ class Bootstrap
      */
     public function setConfig()
     {
-        $this->_config = new Zend_Config_Ini('../application/config.ini');
+        try{
+            $this->_config = new Zend_Config_Ini('../application/config.ini');
+        }catch(Exception $e){
+            echo $e;
+        }
+        
     }
     /**
      * Se dejan variables disponibles en el sistema
