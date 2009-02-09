@@ -5,7 +5,7 @@
  * @author SURFORCE
  * @version
  */
-require_once '../application/default/models/Usuarios.php';
+require_once '../application/default/models/Admins.php';
 
 class Admin_LoginController extends Zsurforce_Generic_Controller {
 
@@ -36,9 +36,18 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                     $dbAdapter = Zend_Registry::get('dbAdapter');
                     $autAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
 
-                    $autAdapter->setTableName('usuarios');
-                    $autAdapter->setIdentityColumn('usuario');
-                    $autAdapter->setCredentialColumn('clave');
+                     /*
+                      * Carga configuración dinámica de los datos de la
+                      * tabla que contiene usuarios del sistema
+                      */
+                    $usuarios_tabla     = $this->_config->database->table->usuarios;
+                    $usuarios_login     = $this->_config->database->table->usuarios_login;
+                    $usuarios_pass      = $this->_config->database->table->usuarios_password;
+                    $usuarios_estado    = $this->_config->database->table->usuarios_estado;
+
+                    $autAdapter->setTableName($usuarios_tabla);
+                    $autAdapter->setIdentityColumn($usuarios_login);
+                    $autAdapter->setCredentialColumn($usuarios_pass);
 
                     $autAdapter->setIdentity($usuario);
                     /*
@@ -46,10 +55,10 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                      * el usuario es estado = 1
                      */
 
-                    if( Models_Usuarios::isValid($usuario) ){
+                    if( Models_Usuarios::isValid($usuario, $usuarios_tabla, $usuarios_login, $usuarios_estado) ){
                         $autAdapter->setCredential(md5($password));
                     }else{
-                        $autAdapter->setCredential('');
+                        $autAdapter->setCredential('');                        
                     }
 
                     $aut = Zend_Auth::getInstance();
@@ -69,7 +78,10 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                     $this->view->mensajeError =
                         'Se ha producido un error al intentar recuperar los datos <br><br>'
                         .' En este momento se envió un reporte con el fallo al área de sistemas' ;
-                        
+
+                        if($this->_devel){
+                             $this->view->mensajeError .= $e;
+                        }
                         mail(
                             $this->_config->email->system,
                             'SURFORCE_USUARIOS: error sintaxis en bd de login',

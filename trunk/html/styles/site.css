@@ -104,6 +104,7 @@ body {
 	color: rgb(100,100,100);
 	line-height: 1.3em;
 	font-size: 1.2em;
+    margin:auto;
 }
 
 .middle-column-left {
@@ -140,6 +141,13 @@ a:hover {
 	text-decoration: none;
 	background-color: rgb(255,255,255);
 }
+#login-form{
+    margin:auto;
+}
+#form-login{
+    margin:auto;
+}
+
 #login-form form fieldset label{
 	padding:2px;
 	width:60px;
