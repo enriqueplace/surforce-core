@@ -16,7 +16,22 @@ system = sistemas@surforce.com
 charset = UTF8
 table.prefix =
 
-table.usuarios      = usuarios
+table.usuarios              = "usuarios"
+table.usuarios_id           = "id_usuario"
+table.usuarios_login     = "mail_usuario"
+table.usuarios_password  = "clave_usuario"
+table.usuarios_nombre   = "nombre_usuario"
+table.usuarios_estado   = "estado"
+table.usuarios_baja     = "baja"
+
+table.admins              = "administradores"
+table.admins_id           = "id_admin"
+table.admins_login     = "mail_admin"
+table.admins_password  = "clave_admin"
+table.admins_nombre   = "nombre_admin"
+table.admins_estado   = "estado"
+table.admins_baja     = "estado"
+
 table.menu          = menu
 table.menu_items    = menu_items
 table.aplicaciones  = aplicaciones
