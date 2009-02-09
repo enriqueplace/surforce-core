@@ -1,19 +1,20 @@
 <?php
 /**
- * Clase para gestionar toda la información de Usuarios
+ * Clase para gestionar toda la información de los
+ * Adminis
  * 
  * @category 
  * @package 
  */
-class Models_Usuarios extends Zend_Db_Table_Abstract
+class Models_Admins extends Zend_Db_Table_Abstract
 {
     /**
      * Nombre de la tabla
      */
-	protected $_name = 'usuarios';
+	protected $_name = 'administradores';
 
 	/**
-	 * Obtener todos los usuarios 
+	 * Obtener todos los admins
 	 * 
      * @param  string $where			condición de búsqueda
      * @param  string $limit			cantidad de registros
@@ -22,8 +23,8 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
     */	
 	public static function getAll($where = null, $limit = 0, $order = null  )
 	{
-		$usuarios = new Models_Usuarios();
-		return $usuarios->fetchAll($where, $order, $limit);
+		$admins = new Models_Admins();
+		return $admins->fetchAll($where, $order, $limit);
 	}
 	/**
 	 * Obtener un usuario específico 
@@ -31,10 +32,10 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
      * @param  integer $id				id del usuario
      * @return object
     */
-	public static function getUsuario( $id )
+	public static function getAdmin( $id )
 	{
-		$usuario = new Models_Usuarios();
-		return $usuario->fetchRow("idUsuario = '$id'");
+		$usuario = new Models_Admins();
+		return $usuario->fetchRow("id_admin = '$id'");
 	}
 	/**
 	 * Definir si es un usuario válido a partir de su nombre 
@@ -43,21 +44,21 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
      * @param  string $nombre		nombre del usuario
      * @return boolean
     */	
-	public static function isValid( $usuario, $table = null, $campo = null, $estado = null  )
+	public static function isValid( $admin, $table = null, $campo = null, $estado = null  )
 	{
-		$Usuarios = new Models_Usuarios();
+		$admins = new Models_Admins();
 
         if($table){
-            $Usuarios->_name = $table;
+            $admins->_name = $table;
         }
         if(is_null($campo)){
-            $campo = 'usuario';
+            $campo = 'admin';
         }
         if(is_null($estado)){
             $estado = 'estado';
         }
         
-		$result = $Usuarios->fetchRow($campo." = '".$usuario."' AND ".$estado." = 1 AND baja <> 1 ");
+		$result = $admins->fetchRow($campo." = '".$admin."' AND ".$estado." = 1 AND baja <> 1 ");
 
 		return !is_null($result);
 	}

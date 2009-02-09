@@ -9,7 +9,7 @@
 
 require_once 'Zend/Controller/Action.php';
 
-class IndexController extends Zsurforce_Generic_ControllerAdmin
+class IndexController extends Zsurforce_Generic_ControllerUsuarios
 {
 	/**
 	 * The default action - show the home page
@@ -22,6 +22,6 @@ class IndexController extends Zsurforce_Generic_ControllerAdmin
     }
     public function indexAction() 
     {
-
+        $this->view->application = strtoupper($this->_config->application->name);
     }
 }
