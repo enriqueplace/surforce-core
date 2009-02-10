@@ -81,7 +81,8 @@ class Bootstrap
     */
     public function setErrorReporting()
     {
-        if(isset($this->_config->general->debug) && $this->_config->general->debug){
+        if( (isset($this->_config->general->debug) && $this->_config->general->debug) ||
+            (isset($this->_config->general->devel) && $this->_config->general->devel)) {
 
             ini_set('display_startup_errors', 1);
             ini_set('display_errors', 1);
