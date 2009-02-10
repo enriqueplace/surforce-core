@@ -18,7 +18,7 @@ function cargarJS($config, $filename, $baseUrl){
 
     if(file_exists($path . $filename)){
 
-        return '<script src="'.$baseUrl.'/styles/'.$filename.'" type="text/javascript"></script>'."\n";
+        return '<script src="'.$baseUrl.'/scripts/'.$filename.'" type="text/javascript"></script>'."\n";
 
     }else{
         return '<!-- No existe ' . $filename . '-->'."\n";
