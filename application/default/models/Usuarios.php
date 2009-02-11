@@ -10,8 +10,33 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
     /**
      * Nombre de la tabla
      */
-	protected $_name = 'usuarios';
+	protected $_name;
 
+    /**
+     *  Nombre del usuario
+     * 
+     * @var string
+     */
+    private $_nombre;
+    /**
+     *  Nombre del campo que esta
+     * almacenado en la base el nombre
+     * de usuario
+     * 
+     * @var string
+     */
+    private $_campoNombre;
+    private $_campoEstado;
+
+    public function __construct($nombre, $table = 'usuarios', $campo = null, $estado = null )
+    {
+        parent::__construct();
+        
+        $this->_nombre              = $nombre;
+        $this->_name                = $table;
+        $this->_campoNombre   = $campo;
+        $this->_campoEstado     = $estado;
+    }
 	/**
 	 * Obtener todos los usuarios 
 	 * 
@@ -20,10 +45,9 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
      * @param  string $order			campo de orden
      * @return object
     */	
-	public static function getAll($where = null, $limit = 0, $order = null  )
-	{
-		$usuarios = new Models_Usuarios();
-		return $usuarios->fetchAll($where, $order, $limit);
+	public function getAll($where = null, $limit = 0, $order = null  )
+	{		
+		return $this->fetchAll($where, $order, $limit);
 	}
 	/**
 	 * Obtener un usuario específico 
@@ -31,10 +55,9 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
      * @param  integer $id				id del usuario
      * @return object
     */
-	public static function getUsuario( $id )
+	public function getUsuario( $id )
 	{
-		$usuario = new Models_Usuarios();
-		return $usuario->fetchRow("idUsuario = '$id'");
+		return $this->fetchRow("usuario_id = '$id'");
 	}
 	/**
 	 * Definir si es un usuario válido a partir de su nombre 
@@ -43,21 +66,12 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
      * @param  string $nombre		nombre del usuario
      * @return boolean
     */	
-	public static function isValid( $usuario, $table = null, $campo = null, $estado = null  )
-	{
-		$Usuarios = new Models_Usuarios();
-
-        if($table){
-            $Usuarios->_name = $table;
-        }
-        if(is_null($campo)){
-            $campo = 'usuario';
-        }
-        if(is_null($estado)){
-            $estado = 'estado';
-        }
-        
-		$result = $Usuarios->fetchRow($campo." = '".$usuario."' AND ".$estado." = 1 AND baja <> 1 ");
+	public function isValid()
+	{   
+		$result = $this->fetchRow(
+            $this->_campoNombre." = '".$this->_nombre."' "
+            ." AND usuario_estado = 1 AND usuario_baja <> 1 "
+        );
 
 		return !is_null($result);
 	}

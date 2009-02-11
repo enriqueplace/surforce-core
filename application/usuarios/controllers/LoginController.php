@@ -55,10 +55,17 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller {
                      * el usuario es estado = 1
                      */
 
-                    if( Models_Usuarios::isValid($usuario, $usuarios_tabla, $usuarios_login, $usuarios_estado) ){
+                     $model = new Models_Usuarios(
+                         $usuario, 
+                         $usuarios_tabla, 
+                         $usuarios_login, 
+                         $usuarios_estado
+                     );
+                     
+                    if($model->isValid()){
                         $autAdapter->setCredential(md5($password));
                     }else{
-                        $autAdapter->setCredential('');                        
+                        $autAdapter->setCredential('');
                     }
 
                     $aut = Zend_Auth::getInstance();
@@ -74,42 +81,41 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller {
                     }
 
                 }catch(Zend_Db_Statement_Exception $e){
-                    
+
                     $this->view->mensajeError =
                         'Se ha producido un error al intentar recuperar los datos <br><br>'
-                        .' En este momento se envió un reporte con el fallo al área de sistemas' ;
+                    .' En este momento se envió un reporte con el fallo al área de sistemas' ;
 
-                        if($this->_devel){
-                             $this->view->mensajeError .= $e;
-                        }
-                        mail(
-                            $this->_config->email->system,
-                            'SURFORCE_USUARIOS: error sintaxis en bd de login',
-                            var_export($usuario, true) . ': '. $e
-                        );
+                    if($this->_devel){
+                        $this->view->mensajeError .= $e;
+                    }
+                    mail(
+                        $this->_config->email->system,
+                        'SURFORCE_USUARIOS: error sintaxis en bd de login',
+                        var_export($usuario, true) . ': '. $e
+                    );
 
                 }catch(Zend_Db_Adapter_Exception $e){
                     $this->view->mensajeError =
                         'Se ha producido un error al conectar a la base de datos.'
                         .' Por favor reintente en unos minutos';
 
-                        mail(
-                            $this->_config->email->system,
-                            'SURFORCE_USUARIOS: error conexion en bd',
-                            var_export($usuario, true) . ': '. $e
-                        );
+                    mail(
+                        $this->_config->email->system,
+                        'SURFORCE_USUARIOS: error conexion en bd',
+                        var_export($usuario, true) . ': '. $e
+                    );
 
                 }catch(Zend_Exception $e){
                     $this->view->mensajeError =
                         'Se ha producido un error inesperado.'
                         .' Por favor reintente en unos minutos';
 
-                        mail(
-                            $this->_config->email->system,
-                            'SURFORCE_USUARIOS: login error general',
-                            var_export($usuario, true) . ': '. $e
-                        );
-
+                    mail(
+                        $this->_config->email->system,
+                        'SURFORCE_USUARIOS: login error general',
+                        var_export($usuario, true) . ': '. $e
+                    );
                 }
             }
         }
