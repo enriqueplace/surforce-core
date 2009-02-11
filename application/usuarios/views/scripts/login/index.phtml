@@ -1,19 +1,19 @@
-<div id="login-form">	
-    <form class="cssform" id="form-login" action="<?php echo $this->baseUrl ?>/usuarios/login" method="post">
-    	
-    	<fieldset>
-        	<legend><strong>Login Usuarios</strong></legend>
-    	    
-    	    <label for="usuario">Usuario: </label>
-    	    <input type="text" id="usuario" name="usuario" value="" size="40"/><br>
-    	    
-    	    <label for="password">Clave: </label>
-    	    <input type="password" id="password" name="password" value="" size="40" /><br>
-    	        
-    	    <label for="kludge"></label>
-    	    <input tabindex="5" type="submit" name="login" value="Entrar" onclick="login_validar();" />
+<div id="login" class="login">
 
-        </fieldset>
-    </form>
+  <form action="<?php echo $this->baseUrl ?>/usuarios/login" method="post" id="loginform">
+    <label><em>Usuario : </em><input id="usuario" type="text" name="usuario" /></label>
+    <label><em>Clave : </em><input id="password" type="password" name="password" /></label>
+    <input type="submit" class="submit" id="submit" value="Entrar" onclick="login_validar();" />
+  </form>
+
 </div>
 
+<script>
+
+    $(document).ready(
+        function(){
+            $("#usuario").focus();
+        }
+    );
+
+</script>
