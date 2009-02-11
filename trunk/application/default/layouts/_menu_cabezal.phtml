@@ -1,4 +1,4 @@
-<?php if(isset($this->user->mail_usuario)): ?>
+<?php if(isset($this->user->usuario_id)): ?>
 
     <ul id="menu_cabezal">
     
@@ -9,8 +9,8 @@
             <?php foreach($this->layout()->menu as $item => $menu): ?>
 
                 <li id="menu_item_home">
-                    <a href="<?php echo $this->baseUrl ?>/<?php echo $menu['url'] ?> ">
-                        <strong><?php echo $menu['texto'] ?> </strong>
+                    <a href="<?php echo $this->baseUrl ?>/<?php echo $menu['menu_url'] ?> ">
+                        <strong><?php echo $menu['menu_texto'] ?> </strong>
                     </a>
                 </li>
 

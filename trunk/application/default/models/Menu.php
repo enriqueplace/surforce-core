@@ -12,12 +12,11 @@ class Models_Menu extends Zend_Db_Table_Abstract
         $gestor = new Models_Menu();
 
         $sql =  sprintf(
-            '  SELECT texto, url '
+            '  SELECT menu_texto, menu_url '
             .' FROM menu '
             .' WHERE aplicacion_id = %u '
-            .' AND estado = 1' , $id_aplicacion
-        );
-
+            .' AND menu_estado = 1' , $id_aplicacion
+        );        
         return $gestor->_db->fetchAll($sql);
     }
     public static function getMenuItemsFromModule($module_name)
@@ -25,11 +24,11 @@ class Models_Menu extends Zend_Db_Table_Abstract
         $gestor = new Models_Menu();
 
         $sql =  sprintf(
-            '  SELECT item_id, texto, url '
+            '  SELECT menuitem_id, menuitem_texto, menuitem_url '
             .' FROM menu_items '
-            .' WHERE app_module = "%s" '
-            .' AND estado = 1' 
-            .' ORDER BY item_id ASC ',
+            .' WHERE menuitem_app_module = "%s" '
+            .' AND menuitem_estado = 1'
+            .' ORDER BY menuitem_id ASC ',
             $module_name
         );        
         return $gestor->_db->fetchAll($sql);
