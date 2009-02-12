@@ -7,11 +7,13 @@
  */
 require_once '../application/default/models/Usuarios.php';
 
-class Usuarios_LoginController extends Zsurforce_Generic_Controller {
-
+class Usuarios_LoginController extends Zsurforce_Generic_Controller
+{
+    
     public function init()
     {
         parent::init();
+        Models_Usuarios::registrarAcceso();
     }
     public function indexAction()
     {

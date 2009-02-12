@@ -1,6 +1,7 @@
 <div id="login" class="login">
 
   <form action="<?php echo $this->baseUrl ?>/usuarios/login" method="post" id="login-form">
+    <label><em>IP : </em> <?php echo $_SERVER['REMOTE_ADDR'] ?></label>
     <label><em>Usuario : </em><input id="usuario" type="text" name="usuario" /></label>
     <label><em>Clave : </em><input id="password" type="password" name="password" /></label>
     <input type="submit" class="submit" id="submit" value="Entrar" onclick="login_validar();" />
