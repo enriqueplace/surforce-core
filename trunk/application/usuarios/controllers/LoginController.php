@@ -27,7 +27,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller {
             $password 	= $f->filter($this->_request->getPost('password'));
 
             if (empty($usuario)) {
-                $this->view->message = '¡Nombre vacío!';
+                $this->view->mensajeError = '¡¿Usuario vacío?!';
             } else {
 
                 try{
@@ -76,8 +76,8 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller {
                         $aut->getStorage()->write($data);
                         $this->_redirect('/');
                     } else {
-                        $this->view->message = '¡Usuario o Clave incorrectos!';
-                        echo "usuario invalido";
+                        $this->view->mensajeError = '¡Usuario o Clave incorrectos!';
+                        //echo "usuario invalido";
                     }
 
                 }catch(Zend_Db_Statement_Exception $e){
