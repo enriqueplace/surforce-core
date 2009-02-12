@@ -76,11 +76,15 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                     }
 
                     $aut = Zend_Auth::getInstance();
-                    $result = $aut->authenticate($autAdapter);
+                    $aut_result = $aut->authenticate($autAdapter);
 
-                    if ($result->isValid()) {
+                    if ($aut_result->isValid()) {
+                        
+                        Models_Usuarios::registrarAcceso($aut_result->getIdentity());
+
                         $data = $autAdapter->getResultRowObject(null, 'clave');
                         $aut->getStorage()->write($data);
+                        
                         $this->_redirect('/');
                     } else {
                         $this->view->mensajeError = '¡Usuario o Clave incorrectos!';
