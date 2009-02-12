@@ -70,7 +70,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                         $autAdapter->setCredential('');
                         mail(
                           $this->_config->email->system,
-                            'SURFORCE_USUARIOS: Login incorrecto',
+                            'SURFORCE_USUARIOS: Usuario no válido ',
                             'usuario: '.$usuario.' '.$password
                         );
                     }
@@ -83,7 +83,12 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                         $aut->getStorage()->write($data);
                         $this->_redirect('/');
                     } else {
-                        $this->view->mensajeError = '¡Usuario o Clave incorrectos!';                        
+                        $this->view->mensajeError = '¡Usuario o Clave incorrectos!';
+                         mail(
+                          $this->_config->email->system,
+                            'SURFORCE_USUARIOS: Login incorrecto',
+                            'usuario: '.$usuario.' '.$password
+                        );
                     }
 
                 }catch(Zend_Db_Statement_Exception $e){
