@@ -2,14 +2,17 @@
     Cambiar Clave
 </div>
 
-<form action="<?php echo $this->baseUrl ?>/usuarios/panel/clave" method="post" id="login-form">    
-    <label><em>Nueva clave : </em><input id="password" type="password" name="password" /></label>
-    <label><em>Repetir clave : </em><input id="password" type="password" name="password_repetir" /></label>
-    
-    <input type="submit" class="submit" id="submit" value="Entrar" onclick="cambiar_clave_validar();" />
-    
-</form>
+<div id="cambiar-clave">
 
+    <form id="cambiar-clave-form" name="cambiar-clave-form" action="<?php echo $this->baseUrl ?>/usuarios/panel/clave" method="post">
+
+        <label><em>Nueva clave : </em><input id="pass1" type="password" name="pass1" /></label><br>
+        <label><em>Repetir clave : </em><input id="pass2" type="password" name="pass2" /></label>
+
+    </form>
+    <button id="modificar" name="modificar" value="Modificar" onclick="cambiar_clave_validar();">Modificar</button>
+    
+</div>
 
 <script>
     box_info_effects("#box_info");
