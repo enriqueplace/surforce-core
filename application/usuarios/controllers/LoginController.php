@@ -80,7 +80,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
 
                     if ($aut_result->isValid()) {
                         
-                        Models_Usuarios::registrarAcceso($aut_result->getIdentity());
+                        Models_Usuarios::registrarAcceso($aut_result->getIdentity(), 'login');
 
                         $data = $autAdapter->getResultRowObject(null, 'clave');
                         $aut->getStorage()->write($data);
