@@ -82,7 +82,7 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
      *
      * @return void;
      */
-    public static function registrarAcceso()
+    public static function registrarAcceso($usuario_nombre = null)
     {
         $model = new Models_Usuarios();
 
@@ -94,6 +94,9 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
             'date'                =>  date("Y-m-d H:i:s")
         );
 
+        if(!is_null($usuario_nombre)){
+            $data['usuario'] = $usuario_nombre;
+        }
         $model->_db->insert('access_site', $data);
     }
 }
