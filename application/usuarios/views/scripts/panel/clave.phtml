@@ -1,0 +1,17 @@
+<div id="box_info" class="info">
+    Cambiar Clave
+</div>
+
+<form action="<?php echo $this->baseUrl ?>/usuarios/panel/clave" method="post" id="login-form">    
+    <label><em>Nueva clave : </em><input id="password" type="password" name="password" /></label>
+    <label><em>Repetir clave : </em><input id="password" type="password" name="password_repetir" /></label>
+    
+    <input type="submit" class="submit" id="submit" value="Entrar" onclick="cambiar_clave_validar();" />
+    
+</form>
+
+
+<script>
+    box_info_effects("#box_info");
+    $('#menu_item_admin').addClass("selected");
+</script>
