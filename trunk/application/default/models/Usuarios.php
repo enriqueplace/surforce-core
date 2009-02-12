@@ -82,7 +82,7 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
      *
      * @return void;
      */
-    public static function registrarAcceso($usuario_nombre = null)
+    public static function registrarAcceso($usuario_nombre = null, $usuario_module = null, $usuario_controller = null)
     {
         $model = new Models_Usuarios();
 
@@ -97,6 +97,24 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
         if(!is_null($usuario_nombre)){
             $data['usuario'] = $usuario_nombre;
         }
+        if(!is_null($usuario_module)){
+            $data['usuario_module'] = $usuario_module;
+        }
+        if(!is_null($usuario_controller)){
+            $data['usuario_controller'] = $usuario_controller;
+        }
         $model->_db->insert('access_site', $data);
+    }
+    public function setPassword($pass, $usuario_id = null)
+    {
+        $data = array(
+            'usuario_clave'      => md5($pass)
+        );
+        if(!is_null($usuario_id)){
+            $this->update($data, 'usuario_id = '.$usuario_id);
+        }else{
+            throw new Exception('funcionalidad no implementada');
+        }
+        
     }
 }

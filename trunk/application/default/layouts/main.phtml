@@ -57,11 +57,17 @@
 
     <div id="middle-column">
 
-        <div>
+
             <?php if(!is_null($this->mensajeError)): ?>
-                <?php echo $this->render('_box_error.phtml'); ?>
+                <div>
+                    <?php echo $this->render('_box_error.phtml'); ?>
+                </div>
             <?php endif ?>
-        </div>
+            <?php if(!is_null($this->mensajeInformativo)): ?>
+                <div>
+                    <?php echo $this->render('_box_informativo.phtml'); ?>
+                </div>
+            <?php endif ?>
         
         <h1><?php echo $this->placeholder('title') ?></h1>
         
