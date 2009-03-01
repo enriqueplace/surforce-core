@@ -20,7 +20,7 @@ $filename = realpath('..')  . DIRECTORY_SEPARATOR
 if(file_exists($filename)){
 
     $handle     = fopen($filename, "r");
-    $contents   = fread($handle, filesize($filename));
+    $contents   = @fread($handle, filesize($filename));
 
     fclose($handle);
 
