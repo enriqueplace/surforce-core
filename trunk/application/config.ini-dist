@@ -11,6 +11,7 @@ name = surforcecore
 [email]
 info   = info@surforce.com
 system = sistemas@surforce.com
+soporte = soporte@surforce.com
 
 [database]
 charset = UTF8
@@ -66,11 +67,14 @@ logo = "/images/logo.gif"
 
 css.1 = "site.css"
 css.2 = "thickbox.css"
+;css.3 = "NiftyLayout.css"
+css.4 = "niftyCorners.css"
 
 javascript.1 = "site.js"
 javascript.2 = "site_tools.js"
 javascript.3 = "site_effects.js"
 javascript.4 = "site_forms.js"
+javascript.5 = "niftycube.js"
 
 [modules]
 default = "../application/default/controllers"
