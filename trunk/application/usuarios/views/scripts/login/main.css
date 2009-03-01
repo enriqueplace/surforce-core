@@ -1,0 +1,23 @@
+div#box{
+    width: 18em;
+    padding: 5px 5px 5px 5px;
+    margin:10px;
+    background:#E6E6E6;
+    color:#000;
+}
+div#box h1{
+    font: lighter 200% "Trebuchet MS",Arial sans-serif;
+    color: #208BE1;
+}
+/* LOGIN */
+div#login{
+    padding: 40px;
+    margin: 10px;
+    background:#E6E6E6;
+    color:#000;
+}
+div#login h1{
+    font: lighter 200% "Trebuchet MS",Arial sans-serif;
+    color: #208BE1;
+}
+
