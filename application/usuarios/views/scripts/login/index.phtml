@@ -1,12 +1,16 @@
-<div id="login" class="login">
-
+<div id="login" class="login" style="float:left;">
   <form action="<?php echo $this->baseUrl ?>/usuarios/login" method="post" id="login-form">
-    <label><em>IP : </em> <?php echo $_SERVER['REMOTE_ADDR'] ?></label>
+    <label><em>IP : </em> <strong><?php echo $_SERVER['REMOTE_ADDR'] ?></strong></label>
     <label><em>Usuario : </em><input id="usuario" type="text" name="usuario" /></label>
     <label><em>Clave : </em><input id="password" type="password" name="password" /></label>
     <input type="submit" class="submit" id="submit" value="Entrar" onclick="login_validar();" />
   </form>
+</div>
 
+<div id="box" style="float:right;">
+    <h1>¿Problemas con la clave?</h1>
+    <p>Si eres un usuario registrado e intentas ingresar y el sistema no te lo permite,
+    envíanos un email a <strong><?php echo $this->htmlEmailOfuscado($this->config->email->soporte) ?></strong> </p>
 </div>
 
 <script>
@@ -14,6 +18,8 @@
     $(document).ready(
         function(){
             $("#usuario").focus();
+              Nifty("div#box","big");
+              Nifty("div#login","big");
         }
     );
 
