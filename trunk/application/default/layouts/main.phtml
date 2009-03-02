@@ -41,7 +41,7 @@
 
 	 <!-- Navigation -->
      <?php if(isset($this->user->usuario_nombre)): ?>
-        <strong>usuario</strong>&nbsp;<?php echo $this->user->usuario_nombre;?>&nbsp;&nbsp;        
+        <strong>usuario: </strong>&nbsp;<?php echo $this->user->usuario_nombre . ' ' . $this->user->usuario_apellido ;?>&nbsp;&nbsp;
      <?php endif; ?>
 
     <div id="header">
