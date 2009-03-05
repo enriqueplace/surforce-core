@@ -56,7 +56,7 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                      * el usuario es estado = 1 and baja <>1
                      */
 
-                    if( Models_Usuarios::isValid($usuario, $admins_tabla, $admins_login, $admins_estado, $admins_baja) ){
+                    if( Models_Admins::isValid($usuario, $admins_tabla, $admins_login, $admins_estado, $admins_baja) ){
                         $autAdapter->setCredential(md5($password));
                     }else{
                         $autAdapter->setCredential('');                        
