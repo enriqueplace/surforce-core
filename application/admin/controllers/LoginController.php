@@ -38,24 +38,25 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
 
                      /*
                       * Carga configuración dinámica de los datos de la
-                      * tabla que contiene usuarios del sistema
+                      * tabla que contiene los admins del  sistema
                       */
-                    $usuarios_tabla     = $this->_config->database->table->usuarios;
-                    $usuarios_login     = $this->_config->database->table->usuarios_login;
-                    $usuarios_pass      = $this->_config->database->table->usuarios_password;
-                    $usuarios_estado    = $this->_config->database->table->usuarios_estado;
+                    $admins_tabla     = $this->_config->database->table->admins;
+                    $admins_login     = $this->_config->database->table->admins_login;
+                    $admins_pass        = $this->_config->database->table->admins_password;
+                    $admins_estado    = $this->_config->database->table->admins_estado;
+                    $admins_baja        = $this->_config->database->table->admins_baja;
 
-                    $autAdapter->setTableName($usuarios_tabla);
-                    $autAdapter->setIdentityColumn($usuarios_login);
-                    $autAdapter->setCredentialColumn($usuarios_pass);
+                    $autAdapter->setTableName($admins_tabla);
+                    $autAdapter->setIdentityColumn($admins_login);
+                    $autAdapter->setCredentialColumn($admins_pass);
 
                     $autAdapter->setIdentity($usuario);
                     /*
                      * Habilitar el login solo si
-                     * el usuario es estado = 1
+                     * el usuario es estado = 1 and baja <>1
                      */
 
-                    if( Models_Usuarios::isValid($usuario, $usuarios_tabla, $usuarios_login, $usuarios_estado) ){
+                    if( Models_Usuarios::isValid($usuario, $admins_tabla, $admins_login, $admins_estado, $admins_baja) ){
                         $autAdapter->setCredential(md5($password));
                     }else{
                         $autAdapter->setCredential('');                        
@@ -67,7 +68,7 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                     if ($result->isValid()) {
                         $data = $autAdapter->getResultRowObject(null, 'clave');
                         $aut->getStorage()->write($data);
-                        $this->_redirect('/');
+                        $this->_redirect('/admin/');
                     } else {
                         $this->view->message = '¡Usuario o Clave incorrectos!';
                         echo "usuario invalido";
@@ -84,7 +85,7 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                         }
                         mail(
                             $this->_config->email->system,
-                            'SURFORCE_USUARIOS: error sintaxis en bd de login',
+                            'error sintaxis en bd de login',
                             var_export($usuario, true) . ': '. $e
                         );
 
@@ -95,7 +96,7 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
 
                         mail(
                             $this->_config->email->system,
-                            'SURFORCE_USUARIOS: error conexion en bd',
+                            'error conexion en bd',
                             var_export($usuario, true) . ': '. $e
                         );
 
@@ -106,10 +107,9 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
 
                         mail(
                             $this->_config->email->system,
-                            'SURFORCE_USUARIOS: login error general',
+                            'login error general',
                             var_export($usuario, true) . ': '. $e
                         );
-
                 }
             }
         }
@@ -121,6 +121,6 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
     function logoutAction()
     {
         Zend_Auth::getInstance()->clearIdentity();
-        $this->_redirect('/');
+        $this->_redirect('/admin/login/');
     }
 }
