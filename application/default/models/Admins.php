@@ -44,7 +44,7 @@ class Models_Admins extends Zend_Db_Table_Abstract
      * @param  string $nombre		nombre del usuario
      * @return boolean
     */	
-	public static function isValid( $admin, $table = null, $campo = null, $estado = null  )
+	public static function isValid( $admin, $table = null, $campo = null, $estado = null, $baja = null  )
 	{
 		$admins = new Models_Admins();
 
@@ -57,8 +57,10 @@ class Models_Admins extends Zend_Db_Table_Abstract
         if(is_null($estado)){
             $estado = 'estado';
         }
-        
-		$result = $admins->fetchRow($campo." = '".$admin."' AND ".$estado." = 1 AND baja <> 1 ");
+        if(is_null($baja)){
+            $baja = 'baja';
+        }
+		$result = $admins->fetchRow($campo." = '".$admin."' AND ".$estado." = 1 AND ".$baja." <> 1 ");
 
 		return !is_null($result);
 	}
