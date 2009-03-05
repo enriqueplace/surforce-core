@@ -31,7 +31,7 @@ table.admins_login     = "admin_mail"
 table.admins_password  = "admin_clave"
 table.admins_nombre   = "admin_nombre"
 table.admins_estado   = "admin_estado"
-table.admins_baja     = "admin_estado"
+table.admins_baja     = "admin_baja"
 
 table.menu          = menu
 table.menu_items    = menu_items
