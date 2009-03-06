@@ -7,7 +7,7 @@
  * @version 
  */
 
-class Usuarios_IndexController extends Zsurforce_Generic_ControllerAdmin
+class Usuarios_IndexController extends Zsurforce_Generic_ControllerUsuarios
 {
     public function init()
     {
