@@ -86,10 +86,15 @@ class Models_Usuarios extends Zend_Db_Table_Abstract
     {
         $model = new Models_Usuarios();
 
+        if(isset($_SERVER['HTTP_REFERER'])){
+            $http_referer = $_SERVER['HTTP_REFERER'];
+        }else{
+            $http_referer ='';
+        }
         $data = array(
             'remote_address'      => Zsurforce_Net_Ip::getIp(),
             'remote_address_real' => Zsurforce_Net_Ip::getIpReal(),
-            'url_referer'         => $_SERVER['HTTP_REFERER'],
+            'url_referer'         => $http_referer,
             'domain'              => gethostbyaddr($_SERVER['REMOTE_ADDR']),
             'date'                =>  date("Y-m-d H:i:s")
         );
