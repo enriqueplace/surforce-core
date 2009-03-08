@@ -60,6 +60,7 @@ class Models_Admins extends Zend_Db_Table_Abstract
         if(is_null($baja)){
             $baja = 'baja';
         }
+
 		$result = $admins->fetchRow($campo." = '".$admin."' AND ".$estado." = 1 AND ".$baja." <> 1 ");
 
 		return !is_null($result);
