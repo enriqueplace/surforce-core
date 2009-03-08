@@ -12,8 +12,8 @@ class Admin_IndexController extends Zsurforce_Generic_ControllerAdmin
     public function init()
     {
         parent::init();
-        $this->view->headTitle('Admin Module');
-        $this->view->placeholder('title')->set('Admin Module');
+        //$this->view->headTitle('Admin Module');
+        //$this->view->placeholder('title')->set('Admin Module');
     }
     public function indexAction() 
     {
