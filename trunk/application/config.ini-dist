@@ -1,5 +1,5 @@
 [general]
-debug   = off
+debug   =
 session = on
 devel   = on
 timezone  = America/Buenos_Aires
@@ -33,8 +33,15 @@ table.admins_nombre   = "admin_nombre"
 table.admins_estado   = "admin_estado"
 table.admins_baja     = "admin_baja"
 
-table.menu          = menu
-table.menu_items    = menu_items
+table.public_menu           = public_menu
+table.public_menu_items  = public_menu_items
+
+table.usuarios_menu          = usuarios_menu
+table.usuarios_menu_items  =usuarios_menu_items
+
+table.admin_menu           = admins_menu
+table.admin_menu_items  = admins_menu_items
+
 table.aplicaciones  = aplicaciones
 
 [database_prod]
@@ -81,4 +88,3 @@ default = "../application/default/controllers"
 
 controllers.admin           = "../application/admin/controllers"
 controllers.estadisticas    = "../application/estadisticas/controllers"
-
