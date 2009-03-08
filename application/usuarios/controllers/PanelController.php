@@ -8,7 +8,7 @@
  */
 require_once '../application/default/models/Usuarios.php';
 
-class Usuarios_PanelController extends Zsurforce_Generic_ControllerAdmin
+class Usuarios_PanelController extends Zsurforce_Generic_ControllerUsuarios
 {
     public function init()
     {
