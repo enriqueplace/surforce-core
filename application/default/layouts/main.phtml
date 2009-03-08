@@ -57,7 +57,7 @@
 
     <div id="middle-column">
 
-            <?php if(isset($this->config->general->mantenimiento)): ?>
+            <?php if(isset($this->config->general->mantenimiento) && $this->config->general->mantenimiento == 'on'): ?>
 
                 <?php echo $this->render('_sistema_en_mantenimiento.phtml'); ?>
                 
