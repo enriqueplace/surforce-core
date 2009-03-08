@@ -1,4 +1,5 @@
 [general]
+mantenimiento = 
 debug   =
 session = on
 devel   = on
