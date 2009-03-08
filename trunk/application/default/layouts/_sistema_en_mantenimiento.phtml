@@ -1,0 +1,10 @@
+<?php $this->mensajeInformativo = "<strong>¿ SISTEMA EN MANTENIMIENTO ?</strong>"; ?>
+
+<?php
+
+if(file_exists('mantenimiento.txt')){
+    $this->mensajeInformativo .= file_get_contents('mantenimiento.txt');
+}
+?>
+<?php echo $this->render('_box_informativo.phtml'); ?>
+<?php die(); ?>

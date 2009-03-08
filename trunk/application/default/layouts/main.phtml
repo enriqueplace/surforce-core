@@ -57,6 +57,11 @@
 
     <div id="middle-column">
 
+            <?php if(isset($this->config->general->mantenimiento)): ?>
+
+                <?php echo $this->render('_sistema_en_mantenimiento.phtml'); ?>
+                
+            <?php endif; ?>
 
             <?php if(!is_null($this->mensajeError)): ?>
                 <div>
