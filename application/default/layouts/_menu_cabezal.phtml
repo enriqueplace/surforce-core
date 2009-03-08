@@ -1,9 +1,7 @@
-<?php if(isset($this->user->usuario_id)): ?>
+<?php if(isset($this->user->usuario_id) || isset($this->user->admin_id)):  ?>
 
     <ul id="menu_cabezal">
     
-       <li id="menu_item_home"><a href="<?php echo $this->baseUrl; ?>/"><strong>home</strong></a></li>
-
         <?php if (isset($this->layout()->menu) && count($this->layout()->menu) > 0 ): ?>
 
             <?php foreach($this->layout()->menu as $item => $menu): ?>
@@ -17,10 +15,6 @@
             <?php endforeach; ?>
             
         <?php endif; ?>
-
-        <li id="menu_item_salir">
-            <a href="<?php echo $this->baseUrl ?>/admin/login/logout">Salir</a>
-        </li>
     
     </ul>
     
