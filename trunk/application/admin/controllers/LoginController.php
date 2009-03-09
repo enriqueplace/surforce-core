@@ -68,6 +68,8 @@ class Admin_LoginController extends Zsurforce_Generic_Controller {
                     if ($result->isValid()) {
                         $data = $autAdapter->getResultRowObject(null, 'clave');
                         $aut->getStorage()->write($data);
+                        $this->_session->adminLogueado = true;
+
                         $this->_redirect('/admin/');
                     } else {
                         $this->view->message = '¡Usuario o Clave incorrectos!';
