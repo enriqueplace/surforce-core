@@ -79,7 +79,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                     $aut_result = $aut->authenticate($autAdapter);
 
                     if ($aut_result->isValid()) {
-                        
+                        $this->_session->usuarioLogueado = true;
                         Models_Usuarios::registrarAcceso($aut_result->getIdentity(), 'login');
 
                         $data = $autAdapter->getResultRowObject(null, 'clave');
