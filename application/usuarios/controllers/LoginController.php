@@ -70,7 +70,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                         $autAdapter->setCredential('');
                         mail(
                           $this->_config->email->system,
-                            'SURFORCE_USUARIOS: Usuario no válido ',
+                            'SURFORCE_USUARIOS: Usuario no válido '.$_SERVER['REMOTE_ADDR'],
                             'usuario: '.$usuario.' '.$password
                         );
                     }
@@ -90,7 +90,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                         $this->view->mensajeError = '¡Usuario o Clave incorrectos!';
                          mail(
                           $this->_config->email->system,
-                            'SURFORCE_USUARIOS: Login incorrecto',
+                            'SURFORCE_USUARIOS: Login incorrecto '.$_SERVER['REMOTE_ADDR'],
                             'usuario: '.$usuario.' '.$password
                         );
                     }
@@ -106,7 +106,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                     }
                     mail(
                         $this->_config->email->system,
-                        'SURFORCE_USUARIOS: error sintaxis en bd de login',
+                        'SURFORCE_USUARIOS: error sintaxis en bd de login '.$_SERVER['REMOTE_ADDR'],
                         var_export($usuario, true) . ': '. $e
                     );
 
@@ -117,7 +117,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
 
                     mail(
                         $this->_config->email->system,
-                        'SURFORCE_USUARIOS: error conexion en bd',
+                        'SURFORCE_USUARIOS: error conexion en bd '.$_SERVER['REMOTE_ADDR'],
                         var_export($usuario, true) . ': '. $e
                     );
 
@@ -128,7 +128,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
 
                     mail(
                         $this->_config->email->system,
-                        'SURFORCE_USUARIOS: login error general',
+                        'SURFORCE_USUARIOS: login error general '.$_SERVER['REMOTE_ADDR'],
                         var_export($usuario, true) . ': '. $e
                     );
                 }
