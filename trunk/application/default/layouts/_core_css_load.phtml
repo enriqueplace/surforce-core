@@ -21,6 +21,12 @@ function cargarCSS($config, $filename, $baseUrl){
         return '<link rel="stylesheet" type="text/css" media="screen" href="'.$baseUrl.'/styles/'.$filename.'" />'."\n";
 
     }else{
-        return '<!-- No existe ' . $filename . '-->'."\n";
+
+        if(substr_count($filename, 'http')){
+            return '<link rel="stylesheet" type="text/css" media="screen" href="'.$filename.'" />'."\n";
+        }else{
+            return '<!-- No existe ' . $filename . '-->'."\n";
+        }
+
     }
 }
