@@ -21,6 +21,9 @@ function cargarJS($config, $filename, $baseUrl){
         return '<script src="'.$baseUrl.'/scripts/'.$filename.'" type="text/javascript"></script>'."\n";
 
     }else{
+            if(substr_count($filename, 'http')){
+                 return '<script src="'.$filename.'" type="text/javascript"></script>'."\n";
+            }
         return '<!-- No existe ' . $filename . '-->'."\n";
     }
 }
