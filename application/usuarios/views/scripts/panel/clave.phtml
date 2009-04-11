@@ -5,16 +5,17 @@
 <div id="cambiar-clave">
 
     <form id="cambiar-clave-form" name="cambiar-clave-form" action="<?php echo $this->baseUrl ?>/usuarios/panel/clave" method="post">
-
-        <label><em>Nueva clave : </em><input id="pass1" type="password" name="pass1" /></label><br>
-        <label><em>Repetir clave : </em><input id="pass2" type="password" name="pass2" /></label>
-
+        <table>
+        <tr>
+            <td><em>Nueva clave : </em></td>
+            <td><input id="pass1" type="password" name="pass1" /></td>
+            <td><button id="modificar" name="modificar" value="Modificar" onclick="cambiar_clave_validar();">Modificar</button></td>
+            </tr>
+            <tr>
+            <td><em>Repetir clave : </em></td>
+            <td><input id="pass2" type="password" name="pass2" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        </table>
     </form>
-    <button id="modificar" name="modificar" value="Modificar" onclick="cambiar_clave_validar();">Modificar</button>
-    
 </div>
-
-<script>
-    box_info_effects("#box_info");
-    $('#menu_item_admin').addClass("selected");
-</script>
