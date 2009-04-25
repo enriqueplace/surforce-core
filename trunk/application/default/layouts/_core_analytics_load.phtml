@@ -1,0 +1,13 @@
+<?php
+/* CORE LOAD ANALYTICS
+ *
+ * Carga el código de Analytics si este existe en /html/analytics.txt
+ *
+ */
+$file = realpath('.') . DIRECTORY_SEPARATOR . 'analytics.txt';
+
+if (file_exists($file)) {
+    return readfile($file);
+} else {
+    return '<!-- No existe codigo Analytics -->' . "\n";
+}
