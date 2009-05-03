@@ -10,11 +10,7 @@ class Bootstrap
     private $_config;
     private $_registry;
     private $_controller;
-    
-    public function __construct()
-    {
-       
-    }
+
     public function setPath()
     {
         set_include_path(
@@ -28,8 +24,11 @@ class Bootstrap
     {
         $this->setPath();
 
-        include "Zend/Loader.php";
-        Zend_Loader::registerAutoload();
+        require_once 'Zend/Loader/Autoloader.php';
+        $loader = Zend_Loader_Autoloader::getInstance();
+        //$loader->registerNamespace('App_');
+        $loader->setFallbackAutoloader(true);
+        $loader->suppressNotFoundWarnings(false);
 
     }
     /**
