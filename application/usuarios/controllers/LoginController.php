@@ -71,7 +71,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                         mail(
                           $this->_config->email->system,
                             'SURFORCE_USUARIOS: Usuario no válido '.$_SERVER['REMOTE_ADDR'],
-                            'usuario: '.$usuario.' '.$password
+                            'usuario: '.$usuario
                         );
                     }
 
@@ -91,7 +91,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                          mail(
                           $this->_config->email->system,
                             'SURFORCE_USUARIOS: Login incorrecto '.$_SERVER['REMOTE_ADDR'],
-                            'usuario: '.$usuario.' '.$password
+                            'usuario: '.$usuario
                         );
                     }
 
