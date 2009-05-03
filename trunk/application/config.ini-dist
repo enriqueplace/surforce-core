@@ -88,4 +88,5 @@ javascript.5 = "niftycube.js"
 default = "../application/default/controllers"
 
 controllers.admin           = "../application/admin/controllers"
+controllers.usuarios    = "../application/usuarios/controllers"
 controllers.estadisticas    = "../application/estadisticas/controllers"
