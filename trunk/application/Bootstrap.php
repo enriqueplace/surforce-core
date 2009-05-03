@@ -217,8 +217,8 @@ class Bootstrap
         try{
             $this->setEnvironment();
             $this->setConfig();
+            $this->setErrorReporting();
             $this->setTimeZone();
-            $this->setErrorReporting();           
             $this->setRegistry();
             $this->setSessionDefault();
             $this->setDatabase();
