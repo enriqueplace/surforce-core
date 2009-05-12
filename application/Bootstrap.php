@@ -10,6 +10,7 @@ class Bootstrap
     private $_config;
     private $_registry;
     private $_controller;
+    private $_log;
 
     public function setPath()
     {
@@ -47,6 +48,18 @@ class Bootstrap
             echo $e;
         }
         
+    }
+    public function setLog()
+    {
+        $log_file = $this->_config->general->log->error;
+
+        $stream = fopen($log_file, 'a', false);
+        if (!$stream) {
+            throw new Exception('Failed to open stream');
+        }
+
+        $writer = new Zend_Log_Writer_Stream($stream);
+        $this->_log = new Zend_Log($writer);
     }
     /**
      * Se dejan variables disponibles en el sistema
@@ -147,19 +160,22 @@ class Bootstrap
 
        }catch(Zend_Db_Statement_Exception $e){
 
-            echo '<strong>Se ha producido un error al intentar recuperar los datos '
-                .'['.$e->getMessage().']</strong> <br><br>';
-
+            echo '<strong>Se ha producido un error al intentar recuperar los datos</strong> <br><br>';
+            $this->_log->log($e->getMessage(), Zend_Log::EMERG);
+            exit;
+            
         }catch(Zend_Db_Adapter_Exception $e){
 
-            echo '<strong>Se ha producido un error al conectar a la base de datos'
-                .'['.$e->getMessage().'] </strong><br><br>';
-            
+            echo '<strong>Se ha producido un error al conectar a la base de datos</strong><br><br>';
+            $this->_log->log($e->getMessage(), Zend_Log::CRIT);
+            exit;
+
         }catch(Zend_Exception $e){
 
-            echo '<strong>Se ha producido un error inesperado '
-                .'['.$e->getMessage().'] </strong><br><br> ';
-                
+            echo '<strong>Se ha producido un error inesperado</strong><br><br> ';
+            $this->_log->log($e->getMessage(),Zend_Log::EMERG);
+            exit;
+            
         }
     }
     public function setController()
@@ -217,6 +233,7 @@ class Bootstrap
         try{
             $this->setEnvironment();
             $this->setConfig();
+            $this->setLog();
             $this->setErrorReporting();
             $this->setTimeZone();
             $this->setRegistry();

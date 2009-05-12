@@ -4,6 +4,7 @@ debug   =
 session = on
 devel   = on
 timezone  = America/Buenos_Aires
+log.error = "../errores.log"
 
 [application]
 id   = 1
