@@ -1,3 +1,7 @@
+div#middle-column{
+    width:800px;
+}
+
 div#box{
     width: 25em;
     padding: 35px 35px 35px 35px;
@@ -22,6 +26,17 @@ div#login h1{
     font: lighter 200% "Trebuchet MS",Arial sans-serif;
     color: #208BE1;
 }
-div#middle-column{
-    width:800px;
+div#twitter_div{
+    padding: 40px;
+    margin: 10px;
+    background:#E6E6E6;
+    color:#000;
+    float:left;
+}
+div#twitter_div h1{
+    font: lighter 200% "Trebuchet MS",Arial sans-serif;
+    color: #208BE1;
+}
+#twitter_update_list li{
+    padding: 2px;
 }
