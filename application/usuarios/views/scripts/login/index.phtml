@@ -1,26 +1,35 @@
 <div id="login" class="login">
-  <form action="<?php echo $this->baseUrl ?>/usuarios/login" method="post" id="login-form">
-    <label><em>IP : </em> <strong><?php echo $_SERVER['REMOTE_ADDR'] ?></strong></label>
-    <label><em>Usuario : </em><input id="usuario" type="text" name="usuario" /></label>
-    <label><em>Clave : </em><input id="password" type="password" name="password" /></label>
-    <input type="submit" class="submit" id="submit" value="Entrar" onclick="login_validar();" />
-  </form>
+    <form action="<?php echo $this->baseUrl ?>/usuarios/login" method="post" id="login-form">
+        <label><em>IP : </em> <strong><?php echo $_SERVER['REMOTE_ADDR'] ?></strong></label>
+        <label><em>Usuario : </em><input id="usuario" type="text" name="usuario" /></label>
+        <label><em>Clave : </em><input id="password" type="password" name="password" /></label>
+        <input type="submit" class="submit" id="submit" value="Entrar" onclick="login_validar();" />
+    </form>
 </div>
 
 <div id="box">
     <h1>¿Problemas con la clave?</h1>
     <p>Si eres un usuario registrado e intentas ingresar y el sistema no te lo permite,
-    envíanos un email a <strong><?php echo $this->htmlEmailOfuscado($this->config->email->soporte) ?></strong> </p>   
+        envíanos un email a <strong><?php echo $this->htmlEmailOfuscado($this->config->email->soporte) ?></strong> </p>
 </div>
+
+<div id="twitter_div">
+    <h2 class="sidebar-title">SURFORCE Updates</h2>
+    <ul id="twitter_update_list"></ul>
+    <a href="http://twitter.com/surforce" id="twitter-link" style="display:block;text-align:right;">sígueme a través de Twitter</a>
+</div>
+<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/surforce.json?callback=twitterCallback2&amp;count=5"></script>
 
 <script>
 
     $(document).ready(
-        function(){
-            $("#usuario").focus();
-              Nifty("div#box","big");
-              Nifty("div#login","big");
-        }
-    );
+    function(){
+        $("#usuario").focus();
+        Nifty("div#box","big");
+        Nifty("div#login","big");
+        Nifty("div#twitter_div","big");
+    }
+);
 
 </script>
