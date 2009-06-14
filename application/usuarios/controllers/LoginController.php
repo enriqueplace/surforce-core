@@ -68,7 +68,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                         $autAdapter->setCredential(md5($password));
                     }else{
                         $autAdapter->setCredential('');
-                        mail(
+                        @mail(
                           $this->_config->email->system,
                             'SURFORCE_USUARIOS: Usuario no válido '.$_SERVER['REMOTE_ADDR'],
                             'usuario: '.$usuario
@@ -88,7 +88,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                         $this->_redirect('/');
                     } else {
                         $this->view->mensajeError = '¡Usuario o Clave incorrectos!';
-                         mail(
+                         @mail(
                           $this->_config->email->system,
                             'SURFORCE_USUARIOS: Login incorrecto '.$_SERVER['REMOTE_ADDR'],
                             'usuario: '.$usuario
@@ -104,7 +104,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                     if($this->_devel){
                         $this->view->mensajeError .= $e;
                     }
-                    mail(
+                    @mail(
                         $this->_config->email->system,
                         'SURFORCE_USUARIOS: error sintaxis en bd de login '.$_SERVER['REMOTE_ADDR'],
                         var_export($usuario, true) . ': '. $e
@@ -115,7 +115,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                         'Se ha producido un error al conectar a la base de datos.'
                         .' Por favor reintente en unos minutos';
 
-                    mail(
+                    @mail(
                         $this->_config->email->system,
                         'SURFORCE_USUARIOS: error conexion en bd '.$_SERVER['REMOTE_ADDR'],
                         var_export($usuario, true) . ': '. $e
@@ -126,7 +126,7 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                         'Se ha producido un error inesperado.'
                         .' Por favor reintente en unos minutos';
 
-                    mail(
+                    @mail(
                         $this->_config->email->system,
                         'SURFORCE_USUARIOS: login error general '.$_SERVER['REMOTE_ADDR'],
                         var_export($usuario, true) . ': '. $e
