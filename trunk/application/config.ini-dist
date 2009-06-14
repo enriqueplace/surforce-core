@@ -6,6 +6,8 @@ devel   = on
 timezone  = America/Buenos_Aires
 log.error = "../errores.log"
 
+twitter = surforce
+
 [application]
 id   = 1
 name = surforcecore
