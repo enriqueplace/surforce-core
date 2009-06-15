@@ -51,7 +51,10 @@ class Bootstrap
     }
     public function setLog()
     {
-        $log_file = $this->_config->general->log->error;
+        if(!isset($this->_config->general->log->error)){
+            $log = 'errores.log';
+        }
+        $log_file = $log;
 
         $stream = fopen($log_file, 'a', false);
         if (!$stream) {
