@@ -52,11 +52,13 @@ class Bootstrap
     public function setLog()
     {
         if(!isset($this->_config->general->log->error)){
-            $log = 'errores.log';
+            $log_file = 'errores.log';
+        }else{
+            $log_file = $this->_config->general->log->error;
         }
-        $log_file = $log;
 
         $stream = fopen($log_file, 'a', false);
+        
         if (!$stream) {
             throw new Exception('Failed to open stream');
         }
