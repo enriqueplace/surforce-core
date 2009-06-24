@@ -80,12 +80,16 @@ css.1 = "site.css"
 css.2 = "thickbox.css"
 ;css.3 = "NiftyLayout.css"
 css.4 = "niftyCorners.css"
+css.5 = "http://jqueryui.com/latest/themes/base/ui.all.css"
 
 javascript.1 = "site.js"
 javascript.2 = "site_tools.js"
 javascript.3 = "site_effects.js"
 javascript.4 = "site_forms.js"
 javascript.5 = "niftycube.js"
+javascript.6 = "http://jqueryui.com/latest/jquery-1.3.2.js"
+javascript.7 = "http://jqueryui.com/latest/ui/ui.core.js"
+javascript.8 = "http://jqueryui.com/latest/ui/ui.tabs.js"
 
 [modules]
 default = "../application/default/controllers"
