@@ -42,7 +42,7 @@
 	 <!-- Navigation -->
      <?php if(isset($this->user->usuario_nombre)): ?>
      	<div id="usuario-info">
-     		<strong>usuario: </strong>&nbsp;<?php echo $this->user->usuario_nombre . ' ' . $this->user->usuario_apellido ;?>&nbsp;&nbsp;
+     		<strong>usuario: </strong>&nbsp;<?php echo $this->user->usuario_nombre . ' ' . $this->user->usuario_apellido ;?>&nbsp;(<?php echo $this->user->usuario_id ?>)&nbsp;
      	</div>        
      <?php endif; ?>
 
