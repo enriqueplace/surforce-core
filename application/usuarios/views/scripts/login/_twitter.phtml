@@ -14,7 +14,7 @@
         type="text/javascript"
         src="http://twitter.com/statuses/user_timeline/<?php echo $this->config->general->twitter ?>.json?callback=twitterCallback2&amp;count=5"></script>
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(
         function(){
             Nifty("div#twitter_div","big");
