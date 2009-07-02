@@ -1,88 +1,88 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
-<html>
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; Charset=UTF-8" />
-		<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" />
-		<meta http-equiv="pragma" content="no-cache" />
-		<meta http-equiv="Cache-Control" content="no-cache" />
-		<meta http-equiv="Content-Language" content="es-ES" />
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; Charset=UTF-8" />
+        <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <meta http-equiv="Content-Language" content="es-ES" />
 
         <!-- CARGA CSS definidos en config.ini -->
         <?php echo $this->render('_core_css_load.phtml'); ?>
 
-        <!-- GOOGLE API --> 
+        <!-- GOOGLE API -->
         <script src="http://www.google.com/jsapi"></script>
         <script>google.load("jquery", "1.2.6");</script>
         <script>google.load("jqueryui", "1.5.3");</script>
 
         <!-- CARGA JS definidos en config.ini -->
         <?php echo $this->render('_core_javascript_load.phtml'); ?>
-        
+
         <!-- CARGA DINAMICA SEGUN EL MODULO ACTUALMENTE EN EJECUCION -->
         <?php echo $this->render('_module_css_load.phtml'); ?>
         <?php echo $this->render('_module_javascript_load.phtml'); ?>
 
         <?php if( isset($this->scriptaculous) && $this->scriptaculous) :?>
-            <script>google.load("prototype", "1.6");</script>
-            <script>google.load("scriptaculous", "1.8.1");</script>
+        <script>google.load("prototype", "1.6");</script>
+        <script>google.load("scriptaculous", "1.8.1");</script>
         <?php endif; ?>
 
-	</head>
-	
-<body>
+    </head>
 
-  <div id="wrap">
+    <body>
 
-    <div id="header-section">
-        <img alt="logo" src="<?php echo $this->baseUrl;?><?echo $this->layout()->logo ?>" border="0" />
-    </div>
+        <div id="wrap">
 
-	 <!-- Navigation -->
-     <?php if(isset($this->user->usuario_nombre)): ?>
-     	<div id="usuario-info">
-     		<strong>usuario: </strong>&nbsp;<?php echo $this->user->usuario_nombre . ' ' . $this->user->usuario_apellido ;?>&nbsp;(<?php echo $this->user->usuario_id ?>)&nbsp;
-     	</div>        
-     <?php endif; ?>
+            <div id="header-section">
+                <img alt="logo" src="<?php echo $this->baseUrl;?><?echo $this->layout()->logo ?>" border="0" />
+            </div>
 
-    <div id="header">
-        <?php echo $this->render('_menu_cabezal.phtml'); ?>
-    </div>
-
-    <div id="left-column">
-        <?php echo $this->render('_menu_lateral.phtml'); ?>
-    </div>
-
-    <div id="right-column">
-    </div>
-
-    <div id="middle-column">
-
-            <?php if(isset($this->config->general->mantenimiento) && $this->config->general->mantenimiento == 'on'): ?>
-
-                <?php echo $this->render('_sistema_en_mantenimiento.phtml'); ?>
-                
+            <!-- Navigation -->
+            <?php if(isset($this->user->usuario_nombre)): ?>
+            <div id="usuario-info">
+                <strong>usuario: </strong>&nbsp;<?php echo $this->user->usuario_nombre . ' ' . $this->user->usuario_apellido ;?>&nbsp;(<?php echo $this->user->usuario_id ?>)&nbsp;
+            </div>
             <?php endif; ?>
 
-            <?php if(!is_null($this->mensajeError)): ?>
-                <div>
-                    <?php echo $this->render('_box_error.phtml'); ?>
-                </div>
-            <?php endif ?>
-            <?php if(!is_null($this->mensajeInformativo)): ?>
-                <div>
-                    <?php echo $this->render('_box_informativo.phtml'); ?>
-                </div>
-            <?php endif ?>
-        
-        <h1><?php echo $this->placeholder('title') ?></h1>
-        
-		<?php echo $this->layout()->content ?>
+            <div id="header">
+                <?php echo $this->render('_menu_cabezal.phtml'); ?>
+            </div>
 
-	  <!-- FOOTER -->
-    
-  </div>
-  <?php echo $this->render('_core_analytics_load.phtml'); ?>
-</body>
+            <div id="left-column">
+                <?php echo $this->render('_menu_lateral.phtml'); ?>
+            </div>
+
+            <div id="right-column">
+            </div>
+
+            <div id="middle-column">
+
+                <?php if(isset($this->config->general->mantenimiento) && $this->config->general->mantenimiento == 'on'): ?>
+
+                    <?php echo $this->render('_sistema_en_mantenimiento.phtml'); ?>
+
+                <?php endif; ?>
+
+                <?php if(!is_null($this->mensajeError)): ?>
+                <div>
+                        <?php echo $this->render('_box_error.phtml'); ?>
+                </div>
+                <?php endif ?>
+                <?php if(!is_null($this->mensajeInformativo)): ?>
+                <div>
+                        <?php echo $this->render('_box_informativo.phtml'); ?>
+                </div>
+                <?php endif ?>
+
+                <h1><?php echo $this->placeholder('title') ?></h1>
+
+                <?php echo $this->layout()->content ?>
+
+                <!-- FOOTER -->
+
+            </div>
+            <?php echo $this->render('_core_analytics_load.phtml'); ?>
+        </div>
+    </body>
 </html>
