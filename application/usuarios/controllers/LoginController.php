@@ -9,20 +9,13 @@ require_once '../application/default/models/Usuarios.php';
 
 class Usuarios_LoginController extends Zsurforce_Generic_Controller
 {
+    private $_mensajeError = 'Se ha producido un error, intente nuevamente.<br><br> En este momento se envió un reporte con el fallo al área de sistemas' ;
 
     public function init()
     {
         parent::init();
         Models_Usuarios::registrarAcceso();
-
-        $this->view->mensajeError =
-            'Se ha producido un error, intente nuevamente.<br><br>'
-            .' En este momento se envió un reporte con el fallo al área de sistemas' ;
-            
-        if($this->_devel){
-            $this->view->mensajeError .= $e;
-        }
-
+        $this->_devel = true;
     }
     public function indexAction()
     {
@@ -106,6 +99,12 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
 
                 }catch(Zend_Db_Statement_Exception $e){
 
+                    $this->view->mensajeError = $this->_mensajeError;
+
+                    if(isset($this->_devel) && $this->_devel === true){
+                        $this->view->mensajeError .= $e;
+                    }
+
                     @mail(
                         $this->_config->email->system,
                         'SURFORCE_USUARIOS: error sintaxis en bd de login '.$_SERVER['REMOTE_ADDR'],
@@ -114,6 +113,12 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
 
                 }catch(Zend_Db_Adapter_Exception $e){
 
+                    $this->view->mensajeError = $this->_mensajeError;
+
+                    if(isset($this->_devel) && $this->_devel === true){
+                        $this->view->mensajeError .= $e;
+                    }
+
                     @mail(
                         $this->_config->email->system,
                         'SURFORCE_USUARIOS: error conexion en bd '.$_SERVER['REMOTE_ADDR'],
@@ -121,6 +126,12 @@ class Usuarios_LoginController extends Zsurforce_Generic_Controller
                     );
 
                 }catch(Zend_Exception $e){
+
+                    $this->view->mensajeError = $this->_mensajeError;
+
+                    if(isset($this->_devel) && $this->_devel === true){
+                        $this->view->mensajeError .= $e;
+                    }
 
                     @mail(
                         $this->_config->email->system,
