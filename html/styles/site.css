@@ -193,10 +193,11 @@ input:focus {
     background-position: 10px center;
 }
 .info {
-    color: #00529B;
+    color: #000000;
     background-color: #BDE5F8;
     background-image: url('images/info.png');
     width: 500px;
+    font-weight: bold;
 }
 .success {
     color: #4F8A10;
